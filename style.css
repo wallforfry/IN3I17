@@ -35,12 +35,12 @@ h2, h3{
     border-style: solid;
 }
 
-.dark.h1,
-.dark.h2,
-.dark.h3,
-.dark.h4,
-.dark.h5,
-.dark.h6 {
+h1.dark,
+h2.dark,
+h3.dark,
+h4.dark,
+h5.dark,
+h6.dark {
     color: white;
 }
 
@@ -55,13 +55,12 @@ h2, h3{
     border-style: solid;
 }
 
-
-.light.h1,
-.light.h2,
-.light.h3,
-.light.h4,
-.light.h5,
-.light.h6 {
+h1.light,
+h2.light,
+h3.light,
+h4.light,
+h5.light,
+h6.light {
     color: black;
 }
 
@@ -108,14 +107,43 @@ h2, h3{
 
 .intro-semi-square {
     width: calc(100% - 20px);
-    height: calc(50% - 35px);
+    height: calc(50% - 56px);
     text-align: left;
-    padding-top: 30px;
+    padding-top: 50px;
     padding-left: 10px;
 }
 
 .container2 {
     position: absolute;
-    top: 22vw;
+    top: 25vw;
     width: 100%;
+}
+
+/* Step 3 */
+.round-corner {
+    border-radius: 30px;
+    border-style: solid;
+}
+
+.exp {
+    width: 40vw;
+    height: 10vw;
+}
+
+.exp-left h3{
+    text-align: left;
+    margin-left: 20px;
+}
+
+.exp-left {
+    margin-bottom: 2vw;
+}
+
+.exp-right h3{
+    text-align: right;
+    margin-right: 20px;
+}
+
+.exp-right {
+    margin-left: 10vw;
 }
