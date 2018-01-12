@@ -5,80 +5,95 @@
     <meta name="description" content="CV en html pour le cours de Benjamin Raynal">
     <meta name="author" content="Wallerand DELEVACQ">
     <meta name="keywords" content="cv,html,cours,maman,enfant-handicapé">
+    <link type="text/css" href="style.css" rel="stylesheet"/>
     <title>CV de Paulo De Domoy</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <td><img src="moi.png" width="10%" height="10%"/></td>
-            <td>
+
+    <div class="container">
+        <div class="intro-left">
+            <img class="intro-image " src="moi.png" />
+            <div class="intro-left-text">
+                <h1 class="light">Coucou !</h1>
+            </div>
+        </div>
+        <div class="intro-right">
+            <div class="light intro-semi-square">
                 <h1>Wallerand Delevacq</h1>
+            </div>
+            <div class="dark intro-semi-square">
                 <address>
                     Wallerand DELEVACQ<br>
                     12 allée des troufions, 46800 Montcuq<br>
                     Tel: +33 6 12 34 56 78<br>
                     <a href="mailto:plop@plop.plop">plop@plop.plop</a>
                 </address>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 
-    <hr>
+    <div class="container2">
+        <hr>
 
-    <ul>
-        <li>
-            <a href="#experience">Expérience</a>
+        <ul>
+            <li>
+                <a href="#experience">Expérience</a>
+                <ul>
+                    <li><a href="#chanteur">Chanteur</a></li>
+                    <li><a href="#acteur">Acteur</a></li>
+                </ul>
+            </li>
+            <li><a href="#formation">Formation</a></li>
+            <li><a href="#competences">Compétences</a></li>
+        </ul>
+
+        <hr>
+
+        <h2 id="experience">Expérience Professionelle</h2>
+        <div class="dark">
+            <h3 id="chanteur">Chanteur, France / (Pays-de-)Galles, 2010-Aujourd'hui</h3>
+            <pre>
+                J'avais des boots blanches,
+                Un gros ceinturon,
+                Une chemise ouverte
+                Sur un médaillon.
+                C'était mon sourire
+                Mon atout majeur.
+                Je m'éclatais comme une bête
+                Quand j'étais chanteur.
+            </pre>
+        </div>
+
+        <div class="light">
+            <h3 id="acteur">Acteur, USA, 2000</h3>
             <ul>
-                <li><a href="#chanteur">Chanteur</a></li>
-                <li><a href="#acteur">Acteur</a></li>
+                <li>Beaucoup de très bonne prise</li>
+                <li>Carrière en ligne très importante</li>
+                <li><q>Des rôles pénétrants, Cinepress</q></li>
             </ul>
-        </li>
-        <li><a href="#formation">Formation</a></li>
-        <li><a href="#competences">Compétences</a></li>
-    </ul>
+        </div>
 
-    <hr>
+        <hr>
 
-    <h2 id="experience">Expérience Professionelle</h2>
-    <h3 id="chanteur">Chanteur, France / (Pays-de-)Galles, 2010-Aujourd'hui</h3>
-    <pre>
-        J'avais des boots blanches,
-        Un gros ceinturon,
-        Une chemise ouverte
-        Sur un médaillon.
-        C'était mon sourire
-        Mon atout majeur.
-        Je m'éclatais comme une bête
-        Quand j'étais chanteur.
-    </pre>
+        <h2 id="formation">Formation</h2>
+        <dl>
+            <dt><b>Grande école du Cirque</b></dt>
+            <dd><i>Apprentissage en trois ans de toutes les positions de souplesse possible, spécialité maman&Cie</i></dd>
+            <dt><b>École du rire</b></dt>
+            <dd><i>Cours de blagues en tous genre à placer en société, par exemple : <q>Comment est-ce qu'on appelle un boomerang qui ne revient pas ? Réponse : Un chat mort !</q></i></dd>
+        </dl>
 
-    <h3 id="acteur">Acteur, USA, 2000</h3>
-    <ul>
-        <li>Beaucoup de très bonne prise</li>
-        <li>Carrière en ligne très importante</li>
-        <li><q>Des rôles pénétrants, Cinepress</q></li>
-    </ul>
+        <hr>
 
-    <hr>
+        <h2 id="competences">Compétences</h2>
+        <table border="1">
+            <tr><th>Faible</th><th>Moyen</th><th>Fort</th></tr>
+            <tr><td>Rockn'Roller</td><td>Tigre et Dragon</td><td>Super G</td></tr>
+            <tr><td>Le tdiangle torride</td><td>Le bateau ivre</td><td>Le cadenas</td></tr>
+            <tr><td>Au pied du mur</td><td>Totem et tabou</td><td>La bombe à retardement</td></tr>
+            <tr><td></td><td></td><td>C'est si bon</td></tr>
 
-    <h2 id="formation">Formation</h2>
-    <dl>
-        <dt><b>Grande école du Cirque</b></dt>
-        <dd><i>Apprentissage en trois ans de toutes les positions de souplesse possible, spécialité maman&Cie</i></dd>
-        <dt><b>École du rire</b></dt>
-        <dd><i>Cours de blagues en tous genre à placer en société, par exemple : <q>Comment est-ce qu'on appelle un boomerang qui ne revient pas ? Réponse : Un chat mort !</q></i></dd>
-    </dl>
-
-    <hr>
-
-    <h2 id="competences">Compétences</h2>
-    <table border="1">
-        <tr><th>Faible</th><th>Moyen</th><th>Fort</th></tr>
-        <tr><td>Rockn'Roller</td><td>Tigre et Dragon</td><td>Super G</td></tr>
-        <tr><td>Le tdiangle torride</td><td>Le bateau ivre</td><td>Le cadenas</td></tr>
-        <tr><td>Au pied du mur</td><td>Totem et tabou</td><td>La bombe à retardement</td></tr>
-        <tr><td></td><td></td><td>C'est si bon</td></tr>
-
-    </table>
+        </table>
+    </div>
 </body>
 </html>
