@@ -1,0 +1,64 @@
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h2, h3{
+    text-transform: capitalize;
+}
+
+.round {
+    border-radius: 5%;
+}
+
+.square {
+    width: 10vw;
+    height: 10vw;
+}
+
+.bigsquare {
+    width: 20vw;
+    height: 20vw;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.dark {
+    background-color: darkslategrey;
+    border-color: black;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+    color: white;
+}
+
+.dark p {
+    color: ghostwhite;
+}
+
+
+.light {
+    background-color: white;
+    border-color: ghostwhite;
+}
+
+
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
+    color: black;
+}
+
+.light p {
+    color: ghostwhite;
+}
