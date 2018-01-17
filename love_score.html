@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Love Score</title>
+</head>
+<body>
+    <input type="text" id="one" placeholder="Première personne"/>
+    <input type="text" id="two" placeholder="Deuxième personne"/>
+    <input type="button" id="go" value="GO"/>
+    <p id="result">Entrez vos deux noms et cliquez sur GO</p>
+</body>
+<script type="text/javascript">
+
+    var verif = function () {
+      var one = document.getElementById("one");
+      var two = document.getElementById("two");
+
+      return one.value === ""|| two.value === "";
+    };
+
+    var calcLoveScore = function() {
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+
+        var i;
+
+        var sumOne = 0;
+        for(i = 0; i < one.value.length; i++){
+            sumOne += parseInt((one.value).charCodeAt(i));
+        }
+
+        var sumTwo = 0;
+        for(i = 0; i < two.value.length; i++){
+            sumTwo += parseInt((two.value).charCodeAt(i));
+        }
+
+        return 100 * Math.min(sumOne, sumTwo) / Math.max(sumOne, sumTwo);
+    };
+
+    var button = document.getElementById("go")
+    button.onclick = function() {
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+
+        if(verif()){
+            alert("Un des champs est vide !");
+        }
+        else if(!/^[a-zA-Z]+$/.test(one.value) || !/^[a-zA-Z]+$/.test(two.value)){
+            alert("Un des champs ne comporte pas uniquement des lettres");
+        }
+        else {
+            console.log(one.value + " " + two.value);
+            var comment = "";
+            var value = calcLoveScore();
+            
+            if(value < 20){
+                comment = "C'est la friendzone assurée.. :(";
+            }
+            else if (value > 80){
+                comment = "Baises laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa !";
+            }
+            else {
+                comment = "Je n'ai rien à ajouter..";
+            }
+            document.getElementById("result").innerHTML = "Votre résultat est : "+calcLoveScore()+" "+comment;
+        }
+    };
+</script>
+</html>
