@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quizz</title>
+</head>
+<body>
+    <p id="field">
+    </p>
+    <br/>
+    <input type="button" id="true" value="Vrai"/>
+    <input type="button" id="false" value="Faux"/>
+    <canvas id="canvas">
+
+    </canvas>
+</body>
+<script type="text/javascript">
+    function obj(question, response) {
+        this.Question = question;
+        this.Expected = response;
+    }
+
+    var tab = [];
+    tab.push(new obj("La couleur du cheval blanc d'Henry IV était-elle le blanc", "vrai"));
+    tab.push(new obj("On appelle un boomerang qui ne revient pas un chat mort ?", "vrai"));
+    tab.push(new obj("Monsieur Raynal aime les mamans ?", "vrai"));
+    tab.push(new obj("1 + 1 = 1", "faux"));
+
+    var vrai = 0;
+    var faux = 0;
+
+    var i = -1;
+    var ask = function() {
+        i++;
+        if(i<tab.length){
+            document.getElementById("field").innerHTML = tab[i].Question;
+        }
+        else{
+            document.getElementById("field").innerHTML = vrai+"/"+parseInt(vrai+faux);
+            drawPieChart(vrai, faux);
+        }
+    };
+
+    var validateVrai = function () {
+        if(tab[i].Expected === "vrai")
+            vrai++;
+        else
+            faux++;
+        ask();
+    };
+
+    var validateFaux = function () {
+        if(tab[i].Expected === "faux")
+            vrai++;
+        else
+            faux++;
+        ask();
+    };
+
+    var drawPieChart = function(yes, no) {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var lastend = 0;
+        var data = [yes, no];
+        var total = 0;
+        var colors = ['blue', 'red'];
+
+        for (var e = 0; e < data.length; e++) {
+            total += data[e];
+        }
+
+        for (var i = 0; i < data.length; i++) {
+            ctx.fillStyle = colors[i];
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.height / 2, lastend, lastend + (Math.PI * 2 * (data[i] / total)), false);
+            ctx.lineTo(canvas.width / 2, canvas.height / 2);
+            ctx.fill();
+            lastend += Math.PI * 2 * (data[i] / total);
+        }
+    };
+
+    document.getElementById("true").onclick = validateVrai;
+    document.getElementById("false").onclick = validateFaux;
+
+    ask();
+    
+    
+
+
+</script>
+</html>
