@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Window Resize</title>
+</head>
+<body>
+    <div>Width : <span id="width"></span></div>
+    <div>Height : <span id="height"></span></div>
+    <div>Size : <span id="size"></span></div>
+    <div>Redimentions : <span id="number"></span></div>
+
+    <canvas id="canvas" width="300px" height="300px"></canvas>
+
+    <script type="text/javascript">
+
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        var width = [];
+        var height = [];
+        var size = [];
+
+        var cptr = 1;
+
+        var getData = function () {
+            document.getElementById("width").innerHTML = window.innerWidth;
+            width.push(window.innerWidth);
+
+            document.getElementById("height").innerHTML = window.innerHeight;
+            height.push(window.innerHeight);
+
+            document.getElementById("size").innerHTML = window.innerWidth * window.innerHeight;
+            size.push(window.innerHeight * window.innerWidth);
+
+            document.getElementById("number").innerHTML = size.length;
+            cptr++;
+        };
+
+        var write = function (ev) {
+            getData();
+
+            if(cptr > 2) {
+                var x1 = cptr - 1;
+                var y1 = width[cptr - 3];
+                var x2 = cptr;
+                var y2 = width[cptr-2];
+                console.log(x1+ " "+ y1 + "  "+ x2 + " "+ y2);
+                drawLine(x1, y1, x2, y2);
+            }
+            else {
+                drawBox();
+                //getData();
+            }
+        };
+
+        var drawBox = function () {
+            var boxSize = 300;
+
+            drawLine(0,0,0,boxSize);
+            drawLine(0,0,boxSize,0);
+            drawLine(boxSize,0,boxSize,boxSize);
+            drawLine(0,boxSize,boxSize,boxSize);
+        };
+
+        function drawLine(sourceX,sourceY,destnationX,destnationY){
+            context.beginPath();
+            context.moveTo(sourceX, sourceY);
+            context.lineTo(destnationX, destnationY);
+            context.stroke();
+        }
+
+        window.onresize = write;
+        window.onload = write;
+    </script>
+</body>
+</html>
