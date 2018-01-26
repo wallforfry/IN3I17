@@ -125,6 +125,10 @@ h6.light {
     border-style: solid;
 }
 
+.container-exp {
+    height: 27vw;
+}
+
 .exp {
     width: 40vw;
     height: 10vw;
@@ -147,3 +151,73 @@ h6.light {
 .exp-right {
     margin-left: 10vw;
 }
+
+/* Step 4 */
+
+.form {
+    position: relative;
+    left: 38vw;
+    width: 22vw;
+    height: 12vw;
+}
+
+.form-left {
+    float:left;
+}
+
+.form-right {
+    float: right;
+}
+
+.container-comp {
+    width: 20vw;
+    height: 25vw;
+}
+
+.container-comp div {
+    height: 20vw;
+}
+
+.container-comp h3 {
+    text-align: center;
+}
+
+.container-comp .circle, .container-comp .circle > div {
+    width: 4.2vw;
+    height: calc(4.2vw - 1.6vw);
+    text-align: center;
+    padding-top: 1.6vw;
+    font-size: 0.7em;
+    display: inline-block;
+}
+
+#circle-double-line {
+    height: calc(4.2vw - 0.9vw);
+    padding-top: 0.9vw;
+}
+
+.comp-left {
+    position: relative;
+    top: 0;
+    left: 10vw;
+}
+
+.comp-center {
+    position: relative;
+    top: -20.3vw;
+    left: 40vW;
+}
+
+.comp-right {
+    position: relative;
+    top: -40.6vw;
+    left: 70vW;
+}
+
+.comp-content {
+    margin-top: 100px;
+    text-align: center;
+}
+
+
+/* Step 6 */
