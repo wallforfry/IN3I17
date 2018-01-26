@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var addDiv = function () {
+        var div = document.createElement("div");
+        div.innerHTML = $("div").length;
+
+        div.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+        $("body").append(div);
+
+        $(document).on("click", "div", function () {
+            $(this).remove();
+            fit();
+        });
+
+        fit();
+
+    };
+
+    var fit = function () {
+
+        var cptr = 0;
+        var width = $(window).width() / 4;
+        var line = 0;
+
+
+
+        $("div").each(function (index) {
+
+            $(this).css("width", width).css("height", width);
+            $(this).css("position", "absolute").css("float", "left").css("display", "inline-block").css("line-height",$(window).width()/4+"px");
+
+            $(this).css("font-size", width/3).css("text-align","center").css("vertical-align", "middle");
+
+            if((Math.floor(cptr/4) % 3) === 0) {
+                $(this).css("margin-left", width * (cptr % 4));
+            }
+            if((Math.floor(cptr/4) % 3) !== 0){
+                $(this).css("margin-left", width * (cptr % 4) + width/2);
+            }
+
+            $(this).css("margin-top", width * line);
+            cptr++;
+
+            if(cptr === 4)
+                line += 1;
+
+            if(cptr === 7) {
+                cptr = 0;
+                line += 1;
+            }
+
+        });
+
+    };
+
+    $(document).ready(function(){
+
+        for(var i = 0; i < 50; i++){
+            addDiv();
+        }
+        fit();
+
+        $(document).keypress(function (e) {
+            if(e.keyCode === 32)
+                addDiv();
+        });
+    });
+
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() >= $(document).height() - $(window).width() / 4) {
+            for(var i = 0; i < 10; i++){
+                addDiv();
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
