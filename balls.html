@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Balls</title>
+</head>
+<body>
+    <canvas id="canvas" height="900px" width="900px" style="border:1px solid #000000;"></canvas>
+
+    <script type="text/javascript">
+
+        var cvs = document.getElementById("canvas");
+        var cvsWidth = 900;
+        var cvsHeight = 900;
+
+        var balles = [];
+
+        var paused = false;
+        
+        function Ball(x, y, radius, color, dx, dy) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.dx = dx;
+            this.dy = dy;
+
+
+            this.draw = function (canvas) {
+                var ctx = canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            };
+
+            this.move = function (canvas) {
+                if(this.x - this.radius < 0 || this.x + this.radius > cvsWidth){
+                    this.dx = -this.dx;
+                }
+
+                if(this.y - this.radius < 0 || this.y + this.radius > cvsHeight){
+                    this.dy = -this.dy;
+                }
+
+                this.x += this.dx;
+                this.y += this.dy;
+            }
+        }
+
+        var addBall = function () {
+            var x = Math.random() * (cvsWidth/2 - 50) + 50;
+            var y = Math.random() * (cvsHeight/2 - 50) + 50;
+            var radius = Math.random() * (50 - 10) + 10;
+            var color = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+            var dx = Math.random() * (10 - 1) + 1;
+            var dy = Math.random() * (10 - 1) + 1;
+
+            var balle = new Ball(x,y, radius, color, dx, dy);
+            balles.push(balle);
+            balle.draw(cvs)
+        };
+
+        var main = function () {
+            addBall();
+            setInterval(loop, 30);
+        };
+
+        var loop = function () {
+            if(!paused) {
+                cvs.getContext("2d").clearRect(0, 0, cvsWidth, cvsHeight);
+                for (var i = 0; i < balles.length; i++) {
+                    balles[i].move(cvs);
+                    balles[i].draw(cvs);
+                }
+            }
+        };
+
+        window.onload = main;
+
+        document.onkeydown = function (ev) {
+          var keycode = event.keyCode || event.which;
+
+          if(keycode === 32){
+              addBall();
+          }
+
+          if(keycode === 80){
+              paused = !paused;
+          }
+        };
+    </script>
+</body>
+</html>
