@@ -9,11 +9,21 @@
 
 <script type="text/javascript">
 
-    var addDiv = function () {
+
+    var page = 0;
+    var images = [];
+    var cptr = 0;
+
+
+    var addDiv = function (image_url) {
         var div = document.createElement("div");
         div.innerHTML = $("div").length;
 
-        div.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+        div.style.backgroundImage = "url('"+image_url+"')";
+        div.style.backgroundRepeat = "no-repeat";
+        div.style.backgroundPosition = "center";
+        div.style.backgroundSize = "cover";
+
         $("body").append(div);
 
         $(document).on("click", "div", function () {
@@ -37,6 +47,7 @@
 
             $(this).css("width", width).css("height", width);
             $(this).css("position", "absolute").css("float", "left").css("display", "inline-block").css("line-height",$(window).width()/4+"px");
+            $(this).css("border-radius", "5%");
 
             $(this).css("font-size", width/3).css("text-align","center").css("vertical-align", "middle");
 
@@ -62,24 +73,52 @@
 
     };
 
-    $(document).ready(function(){
+    var getImages = function (page) {
+        var url = "https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=78a7ad4f3ccccf5c86a8c03e3c09107b&extras=owner_name,url_m&format=json&nojsoncallback=1&per_page=100&page="+page;
+        return $.getJSON(url);
+    };
 
-        for(var i = 0; i < 50; i++){
-            addDiv();
-        }
-        fit();
+    var getData = function (page) {
+        console.log("Start Query");
+        $.when(getImages(page)).done(function (data, status) {
+            console.log("End Query");
+            images = data["photos"]["photo"];
+            populateDiv();
+            page++;
+        });
+    };
+
+    var populateDiv = function () {
+        images.slice(cptr, cptr+10).forEach(function (item) {
+            addDiv(item["url_m"]);
+        });
+        cptr += 10;
+    };
+
+
+
+    $(document).ready(function(){
 
         $(document).keypress(function (e) {
             if(e.keyCode === 32)
                 addDiv();
         });
+
+        getData(page);
     });
+
+
 
     $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() >= $(document).height() - $(window).width() / 4) {
-            for(var i = 0; i < 10; i++){
-                addDiv();
+            if(cptr === 100){
+                cptr = 0;
+                getData(page);
             }
+            else {
+                populateDiv();
+            }
+
         }
     });
 
