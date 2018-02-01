@@ -5,13 +5,13 @@
     <title>Balls</title>
 </head>
 <body>
-    <canvas id="canvas" height="900px" width="900px" style="border:1px solid #000000;"></canvas>
+    <canvas id="canvas" style="border:1px solid #000000;"></canvas>
 
     <script type="text/javascript">
 
         var cvs = document.getElementById("canvas");
-        var cvsWidth = 900;
-        var cvsHeight = 900;
+        var cvsWidth = window.innerWidth;
+        var cvsHeight = window.innerHeight;
 
         var balles = [];
 
@@ -65,6 +65,8 @@
         var main = function () {
             addBall();
             setInterval(loop, 30);
+            cvs.width  = window.innerWidth;
+            cvs.height = window.innerHeight;
         };
 
         var loop = function () {
