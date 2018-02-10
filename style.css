@@ -152,7 +152,7 @@ h6.light {
     margin-left: 10vw;
 }
 
-/* Step 4 */
+/* Step 5 */
 
 .form {
     position: relative;
@@ -169,25 +169,25 @@ h6.light {
     float: right;
 }
 
-.container-comp {
-    width: 20vw;
-    height: 25vw;
-}
+/* Step 6 */
 
 .container-comp div {
+    width: 20vw;
     height: 20vw;
+    overflow: hidden;
 }
 
 .container-comp h3 {
     text-align: center;
 }
 
-.container-comp .circle, .container-comp .circle > div {
+.container-comp .circle{
     width: 4.2vw;
     height: calc(4.2vw - 1.6vw);
     text-align: center;
     padding-top: 1.6vw;
     font-size: 0.7em;
+    position: relative;
     display: inline-block;
 }
 
@@ -215,9 +215,25 @@ h6.light {
 }
 
 .comp-content {
-    margin-top: 100px;
+    padding-top: 100px;
     text-align: center;
 }
 
 
-/* Step 6 */
+/* Step 8 */
+
+.comp-content:hover > div.circle{
+    transform: rotate(360deg);
+    left:0;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    opacity:1;
+}
+
+.comp-content > div.circle{
+    transform: rotate(0deg);
+    left: -100%;
+    transition-duration: 1s;
+    transition-delay: 2s;
+    opacity: 0;
+}
