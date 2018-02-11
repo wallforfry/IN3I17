@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet</title>
+</head>
+<body>
+
+    <div>
+
+        <div id="up" class="cmd">cmd Up</div>
+        <div id="left" class="cmd">cmd Left</div>
+        <div id="up-left" class="cmd">cmd Up Left</div>
+        <div id="right" class="cmd">cmd Right</div>
+        <div id="up-right" class="cmd">cmd Up Right</div>
+        <div id="down" class="cmd">cmd Down</div>
+        <div id="down-left" class="cmd">cmd Down Left</div>
+        <div id="down-right" class="cmd">cmd Down Right</div>
+        <br/>
+
+        <div class="cube-wrap">
+            <div class="cube" id="cube">
+                <div class="front" >Front</div>
+                <div class="back" >Back</div>
+                <div class="top" >Top</div>
+                <div class="bottom" >Bottom</div>
+                <div class="left" >Left</div>
+                <div class="right" >Right</div>
+            </div>
+        </div>
+    </div>
+
+    <style type="text/css">
+
+        :root{
+            --corner-right: 50deg;
+        }
+
+
+        /* COMMANDES */
+
+        .cmd {
+            /*background-color: aqua;*/
+            color: white;
+            width: calc(100vw / 3);
+            height: calc(100vh / 3);
+            display: inline-block;
+            position: absolute;
+        }
+
+        #up {
+            left: calc(100vw / 3);
+            top: 0;
+        }
+
+        #up-right {
+            right: 0;
+            top: 0;
+        }
+
+        #up-left {
+            left: 0;
+            top: 0;
+        }
+
+        #down {
+            left: calc(100vw / 3);
+            bottom: 0;
+        }
+
+        #down-left {
+            left: 0;
+            bottom: 0;
+        }
+
+        #down-right {
+            right: 0;
+            bottom: 0;
+        }
+
+        #left {
+            left: 0;
+            top: calc(100vh / 3);
+        }
+
+        #right {
+            right: 0;
+            top: calc(100vh / 3);
+        }
+
+
+        /* ANIMATIONS */
+
+        #up:hover ~ .cube-wrap > .cube{
+            animation: spin-up;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #up-left:hover ~ .cube-wrap > .cube{
+            animation: spin-up-left;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #up-right:hover ~ .cube-wrap > .cube{
+            animation: spin-up-right;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #right:hover ~ .cube-wrap > .cube{
+            animation: spin-right;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #left:hover ~ .cube-wrap > .cube{
+            animation: spin-left;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #down:hover ~ .cube-wrap > .cube{
+            animation: spin-down;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #down-left:hover ~ .cube-wrap > .cube{
+            animation: spin-down-left;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        #down-right:hover ~ .cube-wrap > .cube{
+            animation: spin-down-right;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: unset;
+            animation-timing-function: linear;
+        }
+
+        /* FIN ANIMATIONS */
+
+
+        /* FIN COMMANDES */
+
+        /* CUBE */
+
+        .cube-wrap{
+            perspective: 100vw;
+            perspective-origin: 20vw -5vw;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+            width: 10vw;
+            height: 10vw;
+        }
+
+        .cube div{
+            width: 10vw;
+            height: 10vw;
+            position: absolute;
+
+            text-align: center;
+            line-height: 10vw;
+            opacity: 0.5;
+            color: white;
+            font-size: 3em;
+        }
+
+        .cube{
+            position: relative;
+            width: 10vw;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            margin: 0 auto;
+        }
+
+        .back {
+            transform: translateZ(-5vw) rotateY(180deg);
+            background-color: gray;
+        }
+        .right {
+            transform: rotateY(-270deg) translateX(5vw);
+            transform-origin: top right;
+            background-color: green;
+        }
+        .left {
+            transform: rotateY(270deg) translateX(-5vw);
+            transform-origin: left center;
+            background-color: red;
+        }
+        .top {
+            transform: rotateX(90deg) translateY(-5vw);
+            transform-origin: top center;
+            background-color: blue;
+        }
+        .bottom {
+            transform: rotateX(-90deg) rotateY(0deg) translateY(5vw);
+            transform-origin: bottom center;
+            background-color: saddlebrown;
+        }
+        .front {
+            transform: translateZ(5vw);
+            background-color: blueviolet;
+        }
+
+        /* FIN CUBE */
+
+
+        /* ANIMATIONS */
+
+
+        @keyframes spin-right {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(45deg); }
+        }
+
+        @keyframes spin-left {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(-45deg); }
+        }
+
+        @keyframes spin-up {
+            from { transform: rotateX(0); }
+            to { transform: rotateX(45deg); }
+        }
+
+        @keyframes spin-down {
+            from { transform: rotateX(0); }
+            to { transform: rotateX(-45deg); }
+        }
+
+        @keyframes spin-up-right {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(45deg) rotateY(45deg); }
+        }
+
+        @keyframes spin-up-left {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(45deg) rotateY(-45deg); }
+        }
+
+        @keyframes spin-down-left {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(-45deg) rotateY(-45deg); }
+        }
+
+        @keyframes spin-down-right {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(-45deg) rotateY(45deg); }
+        }
+
+
+        /* FIN ANIMATIONS */
+
+    </style>
+
+</body>
+</html>
